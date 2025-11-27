@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="100%" height="100%" fill="#fff8e6"/>
+  <g transform="translate(40,60)">
+    <rect x="20" y="60" width="260" height="220" rx="16" fill="#333"/>
+    <path d="M60 40 v-18 a20 20 0 0 1 20 -20 h120 a20 20 0 0 1 20 20 v18" stroke="#333" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <text x="150" y="180" font-family="sans-serif" font-size="22" text-anchor="middle" fill="#fff">UKMX</text>
+  </g>
+</svg>

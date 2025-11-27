@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Store</title>
+    <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>UKMX Music Store</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <header class="site-header">
+        <div class="logo">UKMX</div>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </nav>
+        <div class="header-actions">
+            <button id="cartBtn" aria-label="Show cart">Cart(<span id="cartCount">0</span>)</button>
+        </div>
     </header>
 
     <main>
@@ -31,19 +33,39 @@
             <div class="genres">
                 <span>Rock</span> • <span>Pop</span> • <span>Rap</span> • <span>Trap</span> • <span>House</span>
             </div>
-            <div class="products-container">
-                <!-- Products will go here -->
+            <div class="products-container" id="productsContainer">
+                <!-- Products will be inserted by script.js -->
             </div>
         </section>
 
         <section id="about">
             <h2>About UKMX Music Store</h2>
-            <p>Located in downtown Reykjavík, UKMX Music Store is your premier destination for vinyl records, CDs, and exclusive music merchandise. We specialize in rock, pop, rap, trap, and house music, offering carefully curated collections for music enthusiasts of all kinds.</p>
+            <div class="about-content">
+                <img src="images/music-store-2.jpg" alt="UKMX Music Store Interior" class="about-image">
+                <div class="about-text">
+                    <p>Located in downtown Reykjavík, UKMX Music Store is your premier destination for vinyl records, CDs, and exclusive music merchandise. We specialize in rock, pop, rap, trap, and house music, offering carefully curated collections for music enthusiasts of all kinds.</p>
+                    <p>Since opening in 2016, UKMX has hosted local in-store performances, record-listening events, and community vinyl swaps. Our staff are passionate collectors who help source rare pressings and new releases from Icelandic and international artists.</p>
+                    <p>What we offer:</p>
+                    <ul>
+                        <li>Curated vinyl and CD selections across multiple genres</li>
+                        <li>Official merch — t-shirts, tote bags, and limited-run items</li>
+                        <li>In-store listening booths and weekly DJ nights</li>
+                        <li>Record cleaning and basic pressing advice</li>
+                    </ul>
+                    <p>We aim to be a cultural hub for Reykjavík's music lovers — whether you're hunting a rare pressing or just looking for your next favorite album, our collection and friendly staff have you covered.</p>
+                </div>
+            </div>
         </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
             <p>Visit us in downtown Reykjavík or get in touch with any questions!</p>
+            <div class="contact-details">
+                <p><strong>Address:</strong> Laugavegur 18, 101 Reykjavík, Iceland</p>
+                <p><strong>Email:</strong> <a href="mailto:info@ukmx.is">info@ukmx.is</a></p>
+                <p><strong>Phone:</strong> +354 555 0123</p>
+                <p><strong>Opening Hours:</strong> Mon–Fri 11:00–19:00, Sat 11:00–17:00, Sun Closed</p>
+            </div>
         </section>
     </main>
 
@@ -51,6 +73,55 @@
         <p>&copy; 2025 UKMX Music Store - Downtown Reykjavík</p>
     </footer>
 
-    <script src="script.js"></script>
+    <div id="cartModal" class="cart-modal" aria-hidden="true">
+        <div class="cart-panel" role="dialog" aria-label="Cart">
+            <button id="closeCart" class="close-btn" aria-label="Close cart">×</button>
+            <h3>Cart</h3>
+            <div id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="total">Total: <span id="cartTotal">0</span> €</div>
+                <div class="cart-actions">
+                    <button id="clearCartBtn" class="button ghost" style="margin-right: 8px;">Clear</button>
+                    <button id="checkoutBtn" class="button primary">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="cart-modal" aria-hidden="true">
+        <div class="product-modal-panel" role="dialog" aria-label="Product Details">
+            <button id="closeProduct" class="close-btn" aria-label="Close">×</button>
+            <div class="product-detail-content">
+                <img id="modalImg" src="" alt="">
+                <div class="product-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalArtist" class="product-artist"></p>
+                    <p id="modalDesc"></p>
+                    <div class="product-meta">
+                        <div id="modalPrice" class="price"></div>
+                        <button id="modalAddBtn" class="button primary">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="cart-modal" aria-hidden="true">
+        <div class="cart-panel" role="dialog" aria-label="Payment">
+            <button id="closePayment" class="close-btn" aria-label="Close payment">×</button>
+            <h3>Payment</h3>
+            <div id="paymentItems" style="max-height:300px;overflow:auto;margin-bottom:12px"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>Total:</div>
+                <div id="paymentTotal" style="font-weight:700">0 €</div>
+            </div>
+            <div style="margin-top:12px;text-align:right">
+                <button id="payBtn" class="button primary">Pay</button>
+            </div>
+        </div>
+    </div>
+
+        <script src="script.js?v=6"></script>
 </body>
 </html>
